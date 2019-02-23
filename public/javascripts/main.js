@@ -1,3 +1,5 @@
+const soundEffect = new Audio('assets/buzzer.wav');
+
 const socket = io();
 let room, user, timeAtReset;
 
@@ -15,7 +17,7 @@ socket.on('host', isHost => {
 // Emitted when player buzzes in
 socket.on('buzzed', data => {
   // Play buzzer sound effect
-  document.getElementById('buzzer-sound-effect').play();
+  soundEffect.play();
 
   // Show results
   $('.results .playerId').text(data.playerId);
@@ -40,6 +42,10 @@ socket.on('reset', () => {
 
 $('#join-form').submit(e => {
   e.preventDefault();
+
+  soundEffect.play().then(() => {
+    soundEffect.pause();
+  });
 
   room = e.target.room.value;
   user = e.target.user.value;
