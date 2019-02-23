@@ -4,7 +4,8 @@
   "description": "A web buzzer (for Jeopardy, etc.). Made for Wonderhack 2019.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon ./index.js"
   },
   "repository": {
     "type": "git",
@@ -19,10 +20,13 @@
   "dependencies": {
     "browser-sync": "^2.26.3",
     "del": "^3.0.0",
+    "express": "^4.16.4",
     "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-sass": "^4.0.2",
+    "node-sass-middleware": "^0.11.0",
     "primer-base": "^2.0.0",
-    "run-sequence": "^2.2.1"
+    "socket.io": "^2.2.0"
   }
 }

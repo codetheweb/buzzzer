@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>buzzzer</title>
+    <link rel="stylesheet" href="stylesheets/main.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <container class="welcome">
+      <img class="logo" src="assets/logo.png" />
+
+      <form class="join-form" id="join-form">
+        <input type="text" id="room" placeholder="room name" required/>
+        <input type="text" id="user" placeholder="your name" required/>
+        <input type="submit" value="join" />
+      </form>
+    </container>
+    <container class="host hidden">
+      <div class="results">
+        <div class="playerId">...</div>
+        buzzed first after <span class="buzzTime">...</span> seconds
+      </div>
+
+      <button id="host-reset">new game</button>
+      I'm the host
+    </container>
+    <container class="player hidden">
+      <div class="results">
+        <div class="playerId">...</div>
+        buzzed first after <span class="buzzTime">...</span> seconds
+      </div>
+
+      <button id="buzz-button"></button>
+    </container>
+    <audio id="buzzer-sound-effect" src="assets/buzzer.wav" preload="true"></audio>
+  </body>
+  <script src="javascripts/main.js"></script>
+</html>
