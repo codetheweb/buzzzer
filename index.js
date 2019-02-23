@@ -17,10 +17,14 @@ io.on('connection', socket => {
       const numOfClients = clients.length;
 
       socket.emit('host', (numOfClients === 0));
-    })
 
-    // Join the client to the room
-    socket.join(room);
+      // Join the client to the room
+      socket.join(room);
+
+      // Update client room counts
+      io.sockets.in(room).emit('nPlayers', numOfClients + 1)
+    });
+
   });
 
   // Client buzzed in
@@ -34,7 +38,7 @@ io.on('connection', socket => {
   // Host reset game
   socket.on('reset', () => {
     const room = Object.keys(socket.rooms)[1];
-    
+
     io.sockets.in(room).emit('reset');
   })
 });
