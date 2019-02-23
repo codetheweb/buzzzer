@@ -1,0 +1,27 @@
+{
+  "name": "buzzzer",
+  "version": "0.1.0",
+  "description": "A web buzzer (for Jeopardy, etc.). Made for Wonderhack 2019.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codetheweb/buzzzer.git"
+  },
+  "author": "Max Isom <codetheweb@icloud.com> (https://maxisom.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codetheweb/buzzzer/issues"
+  },
+  "homepage": "https://github.com/codetheweb/buzzzer#readme",
+  "dependencies": {
+    "browser-sync": "^2.26.3",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-sass": "^4.0.2",
+    "run-sequence": "^2.2.1"
+  }
+}
