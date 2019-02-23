@@ -3,8 +3,8 @@
   <head>
     <title>buzzzer</title>
     <link rel="stylesheet" href="stylesheets/main.css" />
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" async defer></script>
   </head>
   <body>
     <container class="welcome welcome-flex-container">
@@ -39,10 +39,11 @@
         buzzed first after <span class="buzzTime">...</span> seconds
       </div>
 
+      <span class="n-players"></span>
+
       <button id="buzz-button"></button>
       <button class="exitButton"><b>exit</b></button>
     </container>
-    <audio id="buzzer-sound-effect" src="assets/buzzer.wav" preload="true"></audio>
   </body>
   <script src="javascripts/main.js"></script>
 </html>
