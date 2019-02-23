@@ -7,33 +7,82 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
-    <container class="welcome">
+    <container class="welcome welcome-flex-container">
       <img class="logo" src="assets/logo.png" />
 
-      <form class="join-form" id="join-form">
+      <form class="join-form welcome-flex-container" id="join-form">
         <input type="text" id="room" placeholder="room name" required/>
         <input type="text" id="user" placeholder="your name" required/>
         <input type="submit" value="join" />
       </form>
     </container>
-    <container class="host hidden">
-      <div class="results">
+    <container class="host full_screen body-flex-container hidden" style="background-color:black">
+      <header class = "full_screen header-flex-container">
+        <h2 class="title">#WonderHack 2019</h2>
+        <h2 class="number">Users: 5</h2>
+      </header>
+      <div class="message results">
         <div class="playerId">...</div>
-        buzzed first after <span class="buzzTime">...</span> seconds
+        buzzed first after<br><span class="buzzTime">...</span> seconds
       </div>
-
-      <button id="host-reset">new game</button>
-      I'm the host
+      <!--<p class="message"><b>User</b><br>buzzed first<br>after<br>time seconds</p>-->
+      <button class="resetButton"><b>reset</b></button>
+      <button class="exitButton"><b>exit</b></button>
     </container>
-    <container class="player hidden">
-      <div class="results">
+    <container class="player hidden full_screen body-flex-container">
+      <header class = "full_screen header-flex-container">
+        <h2 class="title">#WonderHack 2019</h2>
+        <h2 class="number">Users: 5</h2>
+      </header>
+      <div class="message results">
         <div class="playerId">...</div>
         buzzed first after <span class="buzzTime">...</span> seconds
       </div>
 
       <button id="buzz-button"></button>
+      <button class="exitButton"><b>exit</b></button>
     </container>
     <audio id="buzzer-sound-effect" src="assets/buzzer.wav" preload="true"></audio>
   </body>
   <script src="javascripts/main.js"></script>
 </html>
+
+
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>buzzzer</title>
+    <link rel="stylesheet" href="main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.20/peer.min.js"></script>
+  </head>
+  <body>
+    <container class="welcome hidden">
+      <img class="logo" src="assets/logo.png" />
+
+      <form class="interface">
+        <input type="text" id="room" placeholder="room name" />
+        <input type="text" id="user" placeholder="your name" />
+        <input type="submit" value="join" />
+      </form>
+    </container>
+    <container class="host full_screen body-flex-container" style="background-color:black">
+      <header class = "full_screen header-flex-container">
+        <h2 class="title">#WonderHack 2019</h2>
+        <h2 class="number">Users: 5</h2>
+      </header>
+      <p class="message"><b>User</b><br>buzzed first<br>after<br>time seconds</p>
+      <button class="resetButton"><b>RESET</b></button>
+    </container>
+    <container class="player hidden full_screen">
+      <header class = "full_screen header-flex-container">
+        <h2 class="title">#WonderHack 2019</h2>
+        <h2 class="number">Users: 5</h2>
+        <p class="message"><b>User</b><br>buzzed first<br>after<br>time seconds</p>
+      </header>
+    </container>
+  </body>
+  <script src="main.js"></script>
+</html>
+-->

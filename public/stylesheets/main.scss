@@ -7,18 +7,61 @@ html, body {
   min-height: 100vh;
 }
 
+header{
+  background-image: linear-gradient(to right, red, yellow);
+  .title{
+    text-align: left;
+  }
+  .number{
+    text-align: right;
+  }
+  font-size: 20px;
+  color: black;
+}
+
 body {
+  input[type=text]{
+    border-radius: 10px;
+    margin-top: 5%;
+    padding: none;
+    border: none;
+    font-size: 25px;
+    text-align: center;
+  }
+  input[type=submit]{
+    font-size: 20px;
+    background-image: linear-gradient(to right, red, yellow);
+    margin-top: 5%;
+    padding: none;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center;
+    width: 35%;
+  }
   display: flex;
   justify-content: center;
   align-content: center;
   font-family: "Soin Sans Neue";
   font-weight: 200;
+  background-color: black;
+  color: white;
+  .message{
+
+    padding-top: 17%;
+    padding-bottom: 3%;
+    text-align: center;
+    font-size: 25px;
+  }
 }
 
 .welcome {
+
   .logo {
-    max-width: 80%;
+    max-width: 35%;
+
   }
+
 }
 
 .player {
@@ -26,7 +69,7 @@ body {
     background-color: red;
     width: 200px;
     height: 200px;
-
+    border-radius: 50%;
     &.enabled {
       background-color: green;
     }
@@ -34,5 +77,56 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.welcome-flex-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+.header-flex-container{
+  display:inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.body-flex-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.resetButton{
+  background-image: linear-gradient(to right, red, yellow);
+  color:black;
+  text-align: center;
+  width:20%;
+  padding: 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 25px;
+}
+
+.exitButton{
+  background-color: black;
+  color: white;
+  text-align: center;
+  width:10%;
+  padding: 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 30px;
+  position: absolute;
+  right:10%;
+  bottom:10%;
+}
+
+.full_screen{
+  width: 100%;
 }

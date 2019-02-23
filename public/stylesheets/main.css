@@ -511,24 +511,103 @@ html, body {
   width: 100%;
   min-height: 100vh; }
 
+header {
+  background-image: linear-gradient(to right, red, yellow);
+  font-size: 20px;
+  color: black; }
+  header .title {
+    text-align: left; }
+  header .number {
+    text-align: right; }
+
 body {
   display: flex;
   justify-content: center;
   align-content: center;
   font-family: "Soin Sans Neue";
-  font-weight: 200; }
+  font-weight: 200;
+  background-color: black;
+  color: white; }
+  body input[type=text] {
+    border-radius: 10px;
+    margin-top: 5%;
+    padding: none;
+    border: none;
+    font-size: 25px;
+    text-align: center; }
+  body input[type=submit] {
+    font-size: 20px;
+    background-image: linear-gradient(to right, red, yellow);
+    margin-top: 5%;
+    padding: none;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center;
+    width: 35%; }
+  body .message {
+    padding-top: 17%;
+    padding-bottom: 3%;
+    text-align: center;
+    font-size: 25px; }
 
 .welcome .logo {
-  max-width: 80%; }
+  max-width: 35%; }
 
 .player #buzz-button {
   background-color: red;
   width: 200px;
-  height: 200px; }
+  height: 200px;
+  border-radius: 50%; }
   .player #buzz-button.enabled {
     background-color: green; }
 
 .hidden {
-  display: none; }
+  display: none !important; }
+
+.welcome-flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.header-flex-container {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.body-flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; }
+
+.resetButton {
+  background-image: linear-gradient(to right, red, yellow);
+  color: black;
+  text-align: center;
+  width: 20%;
+  padding: 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 25px; }
+
+.exitButton {
+  background-color: black;
+  color: white;
+  text-align: center;
+  width: 10%;
+  padding: 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 30px;
+  position: absolute;
+  right: 10%;
+  bottom: 10%; }
+
+.full_screen {
+  width: 100%; }
 
 /*# sourceMappingURL=main.css.map */
