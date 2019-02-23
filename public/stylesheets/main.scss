@@ -1,0 +1,38 @@
+@import "primer-base/index.scss";
+
+@import "../assets/fonts/stylesheet.css";
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-family: "Soin Sans Neue";
+  font-weight: 200;
+}
+
+.welcome {
+  .logo {
+    max-width: 80%;
+  }
+}
+
+.player {
+  #buzz-button {
+    background-color: red;
+    width: 200px;
+    height: 200px;
+
+    &.enabled {
+      background-color: green;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
