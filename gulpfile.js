@@ -15,6 +15,12 @@ gulp.task('sass', () => {
     .pipe(browserSync.stream());
 });
 
+// JS
+gulp.task('js', () => {
+  return gulp.src('src/main.js')
+    .pipe(gulp.dest('dist'));
+});
+
 // HTML
 gulp.task('html', () => {
   return gulp.src('src/index.html')
@@ -24,7 +30,7 @@ gulp.task('html', () => {
 // Static assets
 gulp.task('assets', () => {
   return gulp.src('src/assets/*')
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/assets/'));
 });
 
 // Minify
@@ -39,33 +45,38 @@ gulp.task('minify', () => {
 
 // Clean dist folder
 gulp.task('build:clean', () => {
-  return del.sync('dist/*');
+  return del('dist/*');
 });
 
 // Basic dev build
-gulp.task('build', gulp.parallel('sass', 'html', 'assets'));
+gulp.task('build', gulp.parallel('sass', 'js', 'html', 'assets'));
+
+// Browser sync reload
+gulp.task('reload', done => {
+  browserSync.reload();
+  done();
+})
 
 // Build and reload
-gulp.task('build:live', (callback) => {
-  runSequence('build', () => {
-    browserSync.reload();
-    callback();
-  });
-});
+gulp.task('build:live', gulp.series('build', 'reload'));
 
 // Production build with minification
 gulp.task('build:production', gulp.series('build:clean', 'build', 'minify'));
 
 // Watch
-gulp.task('serve', gulp.series('build:clean', 'build:live', () => {
+gulp.task('serve', gulp.series(gulp.series('build:clean', 'build:live'), () => {
     // Init Browsersync
     browserSync.init({
+      watch: true,
       server: 'dist'
     });
 
     // Sass
-    gulp.watch('src/main.scss', ['sass']);
+    gulp.watch('src/main.scss', gulp.series('sass'));
 
     // HTML
-    gulp.watch('src/index.html', ['build:live']);
+    gulp.watch('src/index.html', gulp.series('build:live'));
+
+    // JS
+    gulp.watch('src/main.js', gulp.series('build:live'));
 }));
