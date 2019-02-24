@@ -3,6 +3,7 @@ const soundEffect = new Audio('assets/buzzer.wav');
 const socket = io();
 let room, user, timeAtReset;
 let usersInRoom = 0;
+let canBuzz = false;
 
 // Emitted when self joins
 socket.on('host', isHost => {
@@ -13,6 +14,8 @@ socket.on('host', isHost => {
   } else {
     $('.player').removeClass('hidden');
   }
+
+  $('.room').text(room);
 });
 
 // Emitted when player buzzes in
@@ -21,8 +24,10 @@ socket.on('buzzed', data => {
   soundEffect.play();
 
   // Show results
+  const responseTime = Math.round((data.time / 1000) * 100) / 100;
+
   $('.results .playerId').text(data.playerId);
-  $('.results .buzzTime').text(data.time / 1000);
+  $('.results .buzzTime').text(responseTime);
 
   // Disable buzz button
   $('#buzz-button').removeClass('enabled').attr('disabled', 'disabled');
@@ -32,6 +37,7 @@ socket.on('buzzed', data => {
 socket.on('reset', () => {
   // Enable buzz button
   $('#buzz-button').addClass('enabled').removeAttr('disabled');
+  canBuzz = true;
 
   // Clear results
   $('.results .playerId').text('...');
@@ -45,7 +51,8 @@ socket.on('reset', () => {
 socket.on('nPlayers', n => {
   usersInRoom = n;
 
-  $('.n-players').text(usersInRoom);
+  // Minus 1 since host != player
+  $('.num-players .n').text(usersInRoom - 1);
 });
 
 $('#join-form').submit(e => {
@@ -62,6 +69,8 @@ $('#join-form').submit(e => {
 });
 
 $('#buzz-button').click(e => {
+  if (!canBuzz) return;
+  
   const time = new Date() - timeAtReset;
 
   socket.emit('buzzed', {playerId: user, time: time})
@@ -69,4 +78,8 @@ $('#buzz-button').click(e => {
 
 $('#host-reset').click(e => {
   socket.emit('reset');
+});
+
+$('.exit-button').click(e => {
+  location.reload();
 });

@@ -2,76 +2,153 @@
 
 @import "../assets/fonts/stylesheet.css";
 
-html, body {
-  width: 100%;
-  min-height: 100vh;
+$red: #FF2525;
+$yellow: #FFE53B;
+
+@mixin shadow() {
+  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.4);
 }
 
-header{
-  background-image: linear-gradient(to right, red, yellow);
-  .title{
-    text-align: left;
-  }
-  .number{
-    text-align: right;
-  }
-  font-size: 20px;
-  color: black;
+html, body {
+  width: 100%;
+  height: 100%;
 }
 
 body {
-  input[type=text]{
-    border-radius: 10px;
-    margin-top: 5%;
-    padding: none;
-    border: none;
-    font-size: 25px;
-    text-align: center;
-  }
-  input[type=submit]{
-    font-size: 20px;
-    background-image: linear-gradient(to right, red, yellow);
-    margin-top: 5%;
-    padding: none;
-    border: none;
-    font-weight: bold;
-    border-radius: 10px;
-    text-align: center;
-    width: 35%;
-  }
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-content: center;
+  flex-direction: column;
   font-family: "Soin Sans Neue";
   font-weight: 200;
-  background-color: black;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  background-color: #242424;
   color: white;
-  .message{
+  font-size: calc(1vh + 1vw);
+}
 
-    padding-top: 17%;
-    padding-bottom: 3%;
-    text-align: center;
-    font-size: 25px;
+input[type=text] {
+  border-radius: 5px;
+  margin-top: 7%;
+  padding: 0.5em;
+  font-size: 3em;
+  display: block;
+  width: 100%;
+  border: none;
+
+  @include shadow();
+}
+
+input[type=submit]{
+  width: 50%;
+  font-size: 3em;
+  background-image: linear-gradient(to right, $red, $yellow);
+  margin-top: 10%;
+  padding: 0.5em;
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+
+  @include shadow();
+
+  &:active, &:hover {
+    box-shadow: none;
   }
 }
 
+container:not(.credits) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 80%;
+  height: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.credits {
+  display: block;
+  text-align: center;
+  padding: 0.5em;
+}
+
 .welcome {
-
   .logo {
-    max-width: 35%;
+    max-width: 100%;
+    margin-bottom: 10%;
+  }
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
+header {
+  background-image: linear-gradient(to right, $red, $yellow);
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0.5em 1em;
+  font-size: 2.5em;
+  display: flex;
+  justify-content: space-between;
+  color: black;
+
+  .room-container {
+    font-weight: bold;
+
+    .room {
+      font-weight: 200;
+    }
   }
 
+  .num-players .n {
+    font-weight: bold;
+  }
 }
 
 .player {
   #buzz-button {
-    background-color: red;
-    width: 200px;
-    height: 200px;
+    background-color: $red;
+    width: 15em;
+    height: 15em;
     border-radius: 50%;
+    border: none;
+    cursor: not-allowed;
+
+    @include shadow();
+
     &.enabled {
-      background-color: green;
+      background-color: $yellow;
+      cursor: pointer;
+    }
+  }
+}
+
+.interface {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .results {
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 10%;
+
+    .playerId, .buzzTime {
+      font-weight: bold;
     }
   }
 }
@@ -80,53 +157,79 @@ body {
   display: none !important;
 }
 
-.welcome-flex-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center
-}
-
-.header-flex-container{
-  display:inline-flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.body-flex-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.resetButton{
-  background-image: linear-gradient(to right, red, yellow);
-  color:black;
+#host-reset {
+  background-image: linear-gradient(to right, $yellow, $red);
+  color: black;
   text-align: center;
-  width:20%;
   padding: 0;
-  border-radius: 10px;
-  border: none;
   outline: none;
-  font-size: 25px;
+  font-size: 3em;
+  padding: 0 0.5em;
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+  display: table-cell;
+  vertical-align: middle;
+
+  @include shadow();
+
+  &:active, &:hover {
+    box-shadow: none;
+  }
 }
 
-.exitButton{
-  background-color: black;
+.exit-button {
   color: white;
   text-align: center;
-  width:10%;
   padding: 0;
-  border-radius: 10px;
+  background: none;
   border: none;
   outline: none;
-  font-size: 30px;
+  font-size: 3em;
   position: absolute;
-  right:10%;
-  bottom:10%;
+  right: 10vw;
+  bottom: 10vw;
+  font-weight: bold;
 }
 
-.full_screen{
-  width: 100%;
+@media (min-width: 680px) {
+  body {
+    font-size: 0.5em;
+  }
+
+  header {
+    font-size: 3em;
+  }
+
+  container:not(.credits) {
+    width: 40%;
+  }
+
+  .interface {
+    .results {
+      font-size: 5em;
+    }
+  }
+
+  .player {
+    #buzz-button {
+      width: 25em;
+      height: 25em;
+    }
+  }
+
+  #host-reset {
+    font-size: 5em;
+    padding: 0 0.5em;
+  }
+
+  .credits {
+    font-size: 2em;
+  }
+
+  .exit-button {
+    right: 5vw;
+    bottom: 5vw;
+    font-size: 5em;
+  }
 }

@@ -509,105 +509,169 @@ pre {
 
 html, body {
   width: 100%;
-  min-height: 100vh; }
-
-header {
-  background-image: linear-gradient(to right, red, yellow);
-  font-size: 20px;
-  color: black; }
-  header .title {
-    text-align: left; }
-  header .number {
-    text-align: right; }
+  height: 100%; }
 
 body {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-content: center;
+  flex-direction: column;
   font-family: "Soin Sans Neue";
   font-weight: 200;
-  background-color: black;
-  color: white; }
-  body input[type=text] {
-    border-radius: 10px;
-    margin-top: 5%;
-    padding: none;
-    border: none;
-    font-size: 25px;
-    text-align: center; }
-  body input[type=submit] {
-    font-size: 20px;
-    background-image: linear-gradient(to right, red, yellow);
-    margin-top: 5%;
-    padding: none;
-    border: none;
-    font-weight: bold;
-    border-radius: 10px;
-    text-align: center;
-    width: 35%; }
-  body .message {
-    padding-top: 17%;
-    padding-bottom: 3%;
-    text-align: center;
-    font-size: 25px; }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #242424;
+  color: white;
+  font-size: calc(1vh + 1vw); }
+
+input[type=text] {
+  border-radius: 5px;
+  margin-top: 7%;
+  padding: 0.5em;
+  font-size: 3em;
+  display: block;
+  width: 100%;
+  border: none;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.4); }
+
+input[type=submit] {
+  width: 50%;
+  font-size: 3em;
+  background-image: linear-gradient(to right, #FF2525, #FFE53B);
+  margin-top: 10%;
+  padding: 0.5em;
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.4); }
+  input[type=submit]:active, input[type=submit]:hover {
+    box-shadow: none; }
+
+container:not(.credits) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 80%;
+  height: 90%;
+  margin-left: auto;
+  margin-right: auto; }
+
+.credits {
+  display: block;
+  text-align: center;
+  padding: 0.5em; }
 
 .welcome .logo {
-  max-width: 35%; }
+  max-width: 100%;
+  margin-bottom: 10%; }
+
+.welcome form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+header {
+  background-image: linear-gradient(to right, #FF2525, #FFE53B);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0.5em 1em;
+  font-size: 2.5em;
+  display: flex;
+  justify-content: space-between;
+  color: black; }
+  header .room-container {
+    font-weight: bold; }
+    header .room-container .room {
+      font-weight: 200; }
+  header .num-players .n {
+    font-weight: bold; }
 
 .player #buzz-button {
-  background-color: red;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%; }
+  background-color: #FF2525;
+  width: 15em;
+  height: 15em;
+  border-radius: 50%;
+  border: none;
+  cursor: not-allowed;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.4); }
   .player #buzz-button.enabled {
-    background-color: green; }
+    background-color: #FFE53B;
+    cursor: pointer; }
+
+.interface {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .interface .results {
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 10%; }
+    .interface .results .playerId, .interface .results .buzzTime {
+      font-weight: bold; }
 
 .hidden {
   display: none !important; }
 
-.welcome-flex-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; }
-
-.header-flex-container {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: space-between; }
-
-.body-flex-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center; }
-
-.resetButton {
-  background-image: linear-gradient(to right, red, yellow);
+#host-reset {
+  background-image: linear-gradient(to right, #FFE53B, #FF2525);
   color: black;
   text-align: center;
-  width: 20%;
   padding: 0;
-  border-radius: 10px;
-  border: none;
   outline: none;
-  font-size: 25px; }
+  font-size: 3em;
+  padding: 0 0.5em;
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+  display: table-cell;
+  vertical-align: middle;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.4); }
+  #host-reset:active, #host-reset:hover {
+    box-shadow: none; }
 
-.exitButton {
-  background-color: black;
+.exit-button {
   color: white;
   text-align: center;
-  width: 10%;
   padding: 0;
-  border-radius: 10px;
+  background: none;
   border: none;
   outline: none;
-  font-size: 30px;
+  font-size: 3em;
   position: absolute;
-  right: 10%;
-  bottom: 10%; }
+  right: 10vw;
+  bottom: 10vw;
+  font-weight: bold; }
 
-.full_screen {
-  width: 100%; }
+@media (min-width: 680px) {
+  body {
+    font-size: 0.5em; }
+  header {
+    font-size: 3em; }
+  container:not(.credits) {
+    width: 40%; }
+  .interface .results {
+    font-size: 5em; }
+  .player #buzz-button {
+    width: 25em;
+    height: 25em; }
+  #host-reset {
+    font-size: 5em;
+    padding: 0 0.5em; }
+  .credits {
+    font-size: 2em; }
+  .exit-button {
+    right: 5vw;
+    bottom: 5vw;
+    font-size: 5em; } }
 
 /*# sourceMappingURL=main.css.map */

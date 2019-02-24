@@ -5,85 +5,53 @@
     <link rel="stylesheet" href="stylesheets/main.css" />
     <script src="/socket.io/socket.io.js" async defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" async defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   </head>
   <body>
-    <container class="welcome welcome-flex-container">
+    <container class="welcome">
       <img class="logo" src="assets/logo.png" />
 
-      <form class="join-form welcome-flex-container" id="join-form">
-        <input type="text" id="room" placeholder="room name" required/>
-        <input type="text" id="user" placeholder="your name" required/>
+      <form class="join-form" id="join-form">
+        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="room" placeholder="room name" required/>
+        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="user" placeholder="your name" required/>
         <input type="submit" value="join" />
       </form>
     </container>
-    <container class="host full_screen body-flex-container hidden" style="background-color:black">
-      <header class = "full_screen header-flex-container">
-        <h2 class="title">#WonderHack 2019</h2>
-        <h2 class="number">Users: 5</h2>
+    <container class="host hidden">
+      <header>
+        <div class="room-container">#<span class="room"></span></div>
+        <div class="num-players">Players: <span class="n"></span></div>
       </header>
-      <div class="message results">
-        <div class="playerId">...</div>
-        buzzed first after<br><span class="buzzTime">...</span> seconds
+
+      <div class="interface">
+        <div class="results">
+          <div class="playerId">...</div>
+          buzzed first after <span class="buzzTime">...</span> seconds
+        </div>
+
+        <button id="host-reset">new round</button>
       </div>
-      <!--<p class="message"><b>User</b><br>buzzed first<br>after<br>time seconds</p>-->
-      <button class="resetButton"><b>reset</b></button>
-      <button class="exitButton"><b>exit</b></button>
+      <button class="exit-button">exit</button>
     </container>
-    <container class="player hidden full_screen body-flex-container">
-      <header class = "full_screen header-flex-container">
-        <h2 class="title">#WonderHack 2019</h2>
-        <h2 class="number">Users: 5</h2>
+    <container class="player hidden">
+      <header>
+        <div class="room-container">#<span class="room"></span></div>
+        <div class="num-players">Players: <span class="n"></span></div>
       </header>
-      <div class="message results">
-        <div class="playerId">...</div>
-        buzzed first after <span class="buzzTime">...</span> seconds
+
+      <div class="interface">
+        <div class="results">
+          <div class="playerId">...</div>
+          buzzed first after <span class="buzzTime">...</span> seconds
+        </div>
+
+        <button id="buzz-button"></button>
       </div>
-
-      <span class="n-players"></span>
-
-      <button id="buzz-button"></button>
-      <button class="exitButton"><b>exit</b></button>
+      <button class="exit-button">exit</button>
+    </container>
+    <container class="credits">
+      Made by <a href="https://maxisom.me">Max Isom</a> and Randy Cote.
     </container>
   </body>
   <script src="javascripts/main.js"></script>
 </html>
-
-
-
-<!--
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>buzzzer</title>
-    <link rel="stylesheet" href="main.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.20/peer.min.js"></script>
-  </head>
-  <body>
-    <container class="welcome hidden">
-      <img class="logo" src="assets/logo.png" />
-
-      <form class="interface">
-        <input type="text" id="room" placeholder="room name" />
-        <input type="text" id="user" placeholder="your name" />
-        <input type="submit" value="join" />
-      </form>
-    </container>
-    <container class="host full_screen body-flex-container" style="background-color:black">
-      <header class = "full_screen header-flex-container">
-        <h2 class="title">#WonderHack 2019</h2>
-        <h2 class="number">Users: 5</h2>
-      </header>
-      <p class="message"><b>User</b><br>buzzed first<br>after<br>time seconds</p>
-      <button class="resetButton"><b>RESET</b></button>
-    </container>
-    <container class="player hidden full_screen">
-      <header class = "full_screen header-flex-container">
-        <h2 class="title">#WonderHack 2019</h2>
-        <h2 class="number">Users: 5</h2>
-        <p class="message"><b>User</b><br>buzzed first<br>after<br>time seconds</p>
-      </header>
-    </container>
-  </body>
-  <script src="main.js"></script>
-</html>
--->
